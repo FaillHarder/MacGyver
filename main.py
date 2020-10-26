@@ -36,18 +36,18 @@ random_object(liste)
 
 
 def move_up(liste):
-
+    # récupère l'index de macgyver dans la liste et attribue sa valeur à x
     x = liste.index(HERO_CHARACTER)
-
+    
     if liste[x - 15] == PATH_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x - 15] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x - 15] == GUARDIAN_CHARACTER:
+    elif liste[x - 15] == OBJECT_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x - 15] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x - 15] == OBJECT_CHARACTER:
+    elif liste[x - 15] == GUARDIAN_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x - 15] = HERO_CHARACTER
         return display_map(liste)
@@ -63,11 +63,11 @@ def move_down(liste):
         liste[x] = PATH_CHARACTER
         liste[x + 15] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x + 15] == GUARDIAN_CHARACTER:
+    elif liste[x + 15] == OBJECT_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x + 15] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x + 15] == OBJECT_CHARACTER:
+    elif liste[x + 15] == GUARDIAN_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x + 15] = HERO_CHARACTER
         return display_map(liste)
@@ -82,11 +82,11 @@ def move_left(liste):
         liste[x] = PATH_CHARACTER
         liste[x - 1] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x - 1] == GUARDIAN_CHARACTER:
+    elif liste[x - 1] == OBJECT_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x - 1] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x - 1] == OBJECT_CHARACTER:
+    elif liste[x - 1] == GUARDIAN_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x - 1] = HERO_CHARACTER
         return display_map(liste)
@@ -101,14 +101,18 @@ def move_right(liste):
         liste[x] = PATH_CHARACTER
         liste[x + 1] = HERO_CHARACTER
         return display_map(liste)
-    elif liste[x + 1] == GUARDIAN_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x + 1] = HERO_CHARACTER
-        return display_map(liste)
     elif liste[x + 1] == OBJECT_CHARACTER:
         liste[x] = PATH_CHARACTER
         liste[x + 1] = HERO_CHARACTER
         return display_map(liste)
+    elif liste[x + 1] == GUARDIAN_CHARACTER:
+        if liste.count(OBJECT_CHARACTER) == 0:
+            liste[x] = PATH_CHARACTER
+            liste[x + 1] = HERO_CHARACTER
+            print("Bravo. Vous avez gagné!!!") 
+            return display_map(liste)
+        else:
+            print("Game over. Le gardien vous a tué!!!")       
     else:
         print("C'est un mur !")
 
@@ -129,13 +133,3 @@ while game:
 
     elif joueur == "s":
         move_down(liste)
-        
-        
-
-
-
-
-    
-    
-
-    
