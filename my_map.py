@@ -11,9 +11,9 @@ def txt_transform(fichiertxt):
 
 
 # fonction permettant de print la liste en labyrinthe
-def display_map(var):
-    """Return """
-    for x, tile in enumerate(var):
+def display_map(liste):
+    """Return the labyrinthe in 15x15 """
+    for x, tile in enumerate(liste):
         print(tile, end= "")
         if (x+1) % 15 == 0:
             print("")

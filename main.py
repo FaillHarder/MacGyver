@@ -1,7 +1,6 @@
 from random import randint
 from my_map import txt_transform, display_map
 
-# constants
 PATH_CHARACTER = " "
 WALL_CHARACTER = "#"
 HERO_CHARACTER = "m"
@@ -27,8 +26,6 @@ def random_object(liste):
         if liste[x] == PATH_CHARACTER:
             liste[x] = OBJECT_CHARACTER
             i += 1
-        else:
-            pass
     return liste
 
 random_object(liste)
