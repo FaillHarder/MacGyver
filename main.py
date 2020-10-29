@@ -1,132 +1,93 @@
 from random import randint
 from my_map import txt_transform, display_map
 
+
 PATH_CHARACTER = " "
 WALL_CHARACTER = "#"
 HERO_CHARACTER = "m"
 GUARDIAN_CHARACTER = "g"
 OBJECT_CHARACTER = "@"
 
+
 # transformation du fichier txt en une string
 data = txt_transform("labyrinthe.txt")
 
-# transformation de la string "data" en liste
-liste = []
-for char in data:
-    liste.append(char)
 
-# fonction permettant d'insérer aléatoirement les 3 objets dans le labyrinthe
+def string_to_list(string):
+    """Fonction permettant de transformer la string "data" en liste"""
+    liste = []
+    for char in string:
+        liste.append(char)
+    return liste
+
+# création de la liste char_of_the_map depuis la string data
+char_of_the_map = string_to_list(data)
+
+# fonction permettant d'insérer aléatoirement les 3 objets dans le labyrinthe à la place de 3 caractère path
 def random_object(liste):
-    
+    """Fonction en charge de remplacer aléatoirement 3 PATH_CHARACTER par 3 OBJECT_CHARACTER
+    et de retourner la liste (char_of_th_map) avec les modifications"""
     i = 0
     while i < 3:
-
         x = randint(0, len(liste))
-        
-        if liste[x] == PATH_CHARACTER:
-            liste[x] = OBJECT_CHARACTER
+        if char_of_the_map[x] == PATH_CHARACTER:
+            char_of_the_map[x] = OBJECT_CHARACTER
             i += 1
     return liste
 
-random_object(liste)
+# insertion des 3 objets dans la liste
+random_object(char_of_the_map)
 
-
-
-def move_up(liste):
-    # récupère l'index de macgyver dans la liste et attribue sa valeur à x
-    x = liste.index(HERO_CHARACTER)
+def win_condition(liste):
     
-    if liste[x - 15] == PATH_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x - 15] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x - 15] == OBJECT_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x - 15] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x - 15] == GUARDIAN_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x - 15] = HERO_CHARACTER
-        return display_map(liste)
-    else:
-        print("C'est un mur !")
-        
+    x = char_of_the_map.index(HERO_CHARACTER)
+    if char_of_the_map[x + 1] == GUARDIAN_CHARACTER:
+        if char_of_the_map.count(OBJECT_CHARACTER) == 0:
+            print("Victoire, vous avez endormi le Gargien du labyrinthe.")
+            
+        else: 
+            print("Game Over!!! Le Gardien du labyrinthe vous a tué!!!")
+            
+            
 
-def move_down(liste):
-
-    x = liste.index(HERO_CHARACTER)
-
-    if liste[x + 15] == PATH_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x + 15] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x + 15] == OBJECT_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x + 15] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x + 15] == GUARDIAN_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x + 15] = HERO_CHARACTER
-        return display_map(liste)
+def move(liste, y):
+    """Fonction en charge du déplacement de MacGyver ("m") dans la liste (char_of_the_map)
+    avec comme parametre y (-15 = up, +15 = down, -1 = left et +1 = right)"""
+    
+    # récupère l'index de macgyver dans la liste et attribue sa valeur à x
+    x = char_of_the_map.index(HERO_CHARACTER)
+    
+    if char_of_the_map[x + (y)] == PATH_CHARACTER:
+        char_of_the_map[x] = PATH_CHARACTER
+        char_of_the_map[x + (y)] = HERO_CHARACTER   
+    elif char_of_the_map[x + (y)] == OBJECT_CHARACTER:
+        char_of_the_map[x] = PATH_CHARACTER
+        char_of_the_map[x + (y)] = HERO_CHARACTER
+    elif char_of_the_map[x + (y)] == GUARDIAN_CHARACTER:
+        char_of_the_map[x] = PATH_CHARACTER
+        char_of_the_map[x + (y)] = HERO_CHARACTER
     else:
         print("C'est un mur !")
 
-def move_left(liste):
+    
+game = 1
 
-    x = liste.index(HERO_CHARACTER)
-
-    if liste[x - 1] == PATH_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x - 1] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x - 1] == OBJECT_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x - 1] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x - 1] == GUARDIAN_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x - 1] = HERO_CHARACTER
-        return display_map(liste)
-    else:
-        print("C'est un mur !")
-
-def move_right(liste):
-
-    x = liste.index(HERO_CHARACTER)
-
-    if liste[x + 1] == PATH_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x + 1] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x + 1] == OBJECT_CHARACTER:
-        liste[x] = PATH_CHARACTER
-        liste[x + 1] = HERO_CHARACTER
-        return display_map(liste)
-    elif liste[x + 1] == GUARDIAN_CHARACTER:
-        if liste.count(OBJECT_CHARACTER) == 0:
-            liste[x] = PATH_CHARACTER
-            liste[x + 1] = HERO_CHARACTER
-            print("Bravo. Vous avez gagné!!!") 
-            return display_map(liste)
-        else:
-            print("Game over. Le gardien vous a tué!!!")       
-    else:
-        print("C'est un mur !")
-
-display_map(liste)
-game = True
 while game:
 
+
+    display_map(char_of_the_map)
     joueur = input("Que voulez vous faire : ? ('z' pour up, 'q' pour left, 's' pour down, 'd' pour right : ")
 
     if joueur == "z":
-        move_up(liste)
+        move(char_of_the_map, -15)
+        win_condition(char_of_the_map)
 
     elif joueur == "q":
-        move_left(liste)   
-
+        move(char_of_the_map, -1)   
+        win_condition(char_of_the_map)
     elif joueur == "d":
-        move_right(liste)    
-
+        move(char_of_the_map, +1)
+        win_condition(char_of_the_map)
     elif joueur == "s":
-        move_down(liste)
+        move(char_of_the_map, +15)
+        win_condition(char_of_the_map)
