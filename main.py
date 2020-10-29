@@ -44,15 +44,16 @@ def win_condition(liste):
     if char_of_the_map[x + 1] == GUARDIAN_CHARACTER:
         if char_of_the_map.count(OBJECT_CHARACTER) == 0:
             print("Victoire, vous avez endormi le Gargien du labyrinthe.")
+            return 0
             
         else: 
             print("Game Over!!! Le Gardien du labyrinthe vous a tué!!!")
-            
+            return 0
             
 
 def move(liste, y):
-    """Fonction en charge du déplacement de MacGyver ("m") dans la liste (char_of_the_map)
-    avec comme parametre y (-15 = up, +15 = down, -1 = left et +1 = right)"""
+    """Fonction en charge du déplacement de MacGyver ("m") par rapport à son index "x" 
+    dans la liste (char_of_the_map) avec comme parametre y (-15 = up, +15 = down, -1 = left et +1 = right)"""
     
     # récupère l'index de macgyver dans la liste et attribue sa valeur à x
     x = char_of_the_map.index(HERO_CHARACTER)
@@ -70,24 +71,23 @@ def move(liste, y):
         print("C'est un mur !")
 
     
-game = 1
 
-while game:
+while win_condition(char_of_the_map) !=0:
 
-
+    
     display_map(char_of_the_map)
     joueur = input("Que voulez vous faire : ? ('z' pour up, 'q' pour left, 's' pour down, 'd' pour right : ")
+    
 
     if joueur == "z":
         move(char_of_the_map, -15)
-        win_condition(char_of_the_map)
-
+        
     elif joueur == "q":
         move(char_of_the_map, -1)   
-        win_condition(char_of_the_map)
+        
     elif joueur == "d":
         move(char_of_the_map, +1)
-        win_condition(char_of_the_map)
+        
     elif joueur == "s":
         move(char_of_the_map, +15)
-        win_condition(char_of_the_map)
+        
