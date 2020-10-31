@@ -1,4 +1,7 @@
-
+from constants import * 
+from my_map import display_map, txt_transform
+from main import string_to_list
+from main import char_of_the_map
 
 def move(liste, y):
     """Fonction en charge du déplacement de MacGyver ("m") dans la liste (char_of_the_map)
