@@ -72,7 +72,7 @@ def move(liste, y):
 display_map(char_of_the_map)
 
 
-while win_condition(char_of_the_map) !=0:
+while win_condition(char_of_the_map) != 0:
 
     joueur = input("Que voulez vous faire : ? ('z' pour up, 'q' pour left, 's' pour down, 'd' pour right : ")
     destination = {"z": -15, "q": -1, "d": +1, "s": +15}    
