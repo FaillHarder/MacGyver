@@ -1,4 +1,6 @@
 from macgyver import MacGyver
+# draw interface
+# image se charge une seul fois
 
 
 class View:
@@ -15,21 +17,19 @@ class View:
     @staticmethod
     def index_macgyver(liste):
         """Méthode permettant de récuprérer l'index de macgyver dans la liste"""
-        for tile in liste:
+        for pos, tile in enumerate(liste):
             if isinstance(tile, MacGyver):
-                x = liste.index(tile)
-                return x
+                return pos
 
+    # a supprimer
     @staticmethod
     def input_player():
-        joueur = input("Taper 'L' pour quitter :\nTaper 'C' pour commencer : ")
-        return joueur
+        return input("Taper 'L' pour quitter :\nTaper 'C' pour commencer : ")
 
     @staticmethod
-    def input_move():
+    def input_move(key):
         destination = {"z": -15, "q": -1, "s": +15, "d": +1}
-        joueur = input("Que voulez vous faire : ? ('z' pour up, 'q' pour left, 's' pour down, 'd' pour right : ")
-        return destination[joueur]
+        return destination[key]
 
     @staticmethod
     def message(key):

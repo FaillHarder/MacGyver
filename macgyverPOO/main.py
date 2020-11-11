@@ -2,7 +2,7 @@ from model import Model
 from view import View
 from controller import Controller
 
-
+# run win lose
 def main():
 
     game = True
@@ -29,14 +29,12 @@ def main():
                 # Récupération de la position de macgyver
                 macgyver = View.index_macgyver(tiles)
                 Controller.move(tiles, macgyver, destination)
-                if Controller.check_win(tiles, macgyver, destination) == "win":
-                    View.message("win")
+                win_state = Controller.check_win(tiles, macgyver, destination)
+                if win_state:
+                    View.message(win_state)
                     party = False
-                    game_choice
-                elif Controller.check_win(tiles, macgyver, destination) == "lose":
-                    View.message("lose")
-                    party = False
-                    game_choice
+                    View.input_player()
+                
 
 
 if __name__ == "__main__":

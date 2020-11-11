@@ -47,9 +47,10 @@ class Controller:
             maze[index_macgyver+(destination)] = MacGyver()
             maze[index_macgyver] = Path()
             Controller.counter_object += 1
-            print("Macgyver à ramassé {} object.".format(Controller.counter_object))
-        elif isinstance(maze[index_macgyver+(destination)], Guardian):
-            pass
+            print("Macgyver à ramassé {} object.".format(
+                Controller.counter_object
+            ))
+
         else:
             View.message("wall")
 
