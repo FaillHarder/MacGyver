@@ -27,9 +27,10 @@ class View:
         return input("Taper 'L' pour quitter :\nTaper 'C' pour commencer : ")
 
     @staticmethod
-    def input_move(key):
+    def input_move():
         destination = {"z": -15, "q": -1, "s": +15, "d": +1}
-        return destination[key]
+        joueur = input("taper zqsd pour vous déplacer")
+        return destination[joueur]
 
     @staticmethod
     def message(key):

@@ -3,6 +3,9 @@ from path import Path
 from wall import Wall
 from guardian import Guardian
 from macgyver import MacGyver
+from tile import Tile
+
+# vérif si il y a 225 char
 
 
 class Model:

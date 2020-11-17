@@ -7,14 +7,6 @@ from objects import Needle, Ether, Tube
 from random import choice
 
 
-# gérer états du jeu : running (fléches de déplacment)
-#                      win
-#                      lose
-# conditions victoire
-# placement des items
-# déplacements
-
-
 class Controller:
 
     counter_object = 0
@@ -51,7 +43,7 @@ class Controller:
                 Controller.counter_object
             ))
         else:
-            View.message("wall")
+            print("c'est un mur")
 
     @staticmethod
     def check_win(maze, index_macgyver, destination):
@@ -60,7 +52,9 @@ class Controller:
         if isinstance(maze[index_macgyver+(destination)], Guardian):
             if Controller.counter_object == 3:
                 Controller.counter_object = 0
+                print("win")
                 return "win"
             else:
                 Controller.counter_object = 0
+                print("lose")
                 return "lose"

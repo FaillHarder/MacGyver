@@ -2,6 +2,7 @@ from model import Model
 from view import View
 from controller import Controller
 
+
 # run win lose
 def main():
 
@@ -34,7 +35,6 @@ def main():
                     View.message(win_state)
                     party = False
                     View.input_player()
-                
 
 
 if __name__ == "__main__":
