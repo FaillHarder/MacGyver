@@ -5,14 +5,12 @@ from guardian import Guardian
 from macgyver import MacGyver
 from tile import Tile
 
-# vérif si il y a 225 char
-
 
 class Model:
 
     @staticmethod
     def load_from_file(tiles):
-        """Méthode permettant d'instancier les caractères du fichiertxt"""
+        """Method allowing to instantiate the characters of the file txt"""
         with open("maze.txt", "r") as infile:
             data = infile.read().replace("\n", "")
             for char in data:
