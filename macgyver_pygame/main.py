@@ -1,6 +1,7 @@
 from model import Model
 from view import View
 from controller import Controller
+from imagemanager import ImageManager
 import pygame
 from constants import (
     SCREEN, GAME_TITLE, START_TEXT, QUIT_TEXT, GAME_RULE,
@@ -11,7 +12,7 @@ from constants import (
 
 def main():
     pygame.init()
-
+    ImageManager.__init__()
     black = (0, 0, 0)
     rectangle = pygame.rect.Rect(0, 50, 300, 50)
     rectangle2 = pygame.rect.Rect(0, 85, 300, 14)
@@ -32,7 +33,7 @@ def main():
             View.blit_text(SCREEN, GAME_TITLE, 10, 10)
             View.blit_text(SCREEN, START_TEXT, 35, 50)
             View.blit_text(SCREEN, QUIT_TEXT, 32, 80)
-            SCREEN.blit(GAME_RULE, (0, 150))
+            View.blit_image(SCREEN, GAME_RULE, 0, 150)
         # Event pygame
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

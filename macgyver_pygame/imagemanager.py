@@ -1,4 +1,4 @@
-from constant import WALL, MACGYVER, GUARDIAN, PATH, TUBE, ETHER, NEEDLE
+from constants import WALL, MACGYVER, GUARDIAN, PATH, TUBE, ETHER, NEEDLE
 
 
 class ImageManager:
