@@ -20,6 +20,8 @@ class ImageManager:
             "ressources/images/ether20.png").convert_alpha()
         ImageManager.images["Needle"] = pygame.image.load(
             "ressources/images/needle20.png").convert_alpha()
+        ImageManager.images["gr"] = pygame.image.load(
+            "ressources/images/but_du_jeu.png").convert()
 
     @staticmethod
     def get(name):

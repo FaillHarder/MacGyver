@@ -21,12 +21,13 @@ class View:
                 x_number = 0
 
     @staticmethod
-    def blit_text(screen, text, pos_x, pos_y):
+    def blit(screen, text, pos_x, pos_y):
         return SCREEN.blit(text, (pos_x, pos_y))
 
     @staticmethod
-    def blit_image(screen, image, pos_x, pos_y):
-        return SCREEN.blit(image, (pos_x, pos_y))
+    def blit_text(screen, text, pos_x, pos_y):
+        return SCREEN.blit(text, (pos_x, pos_y))
+
 
     @staticmethod
     def index_macgyver(liste):
