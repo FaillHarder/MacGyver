@@ -6,9 +6,9 @@ class View:
 
     @staticmethod
     def draw(tile_list, pos_x, pos_y):
-        """Méthode permétant de dessiner le labyrinthe.
-        Elle prend en paramètre la liste des tuiles
-        et les position x, y de la première tuile"""
+        """Method allowing to draw the labyrinth.
+        It takes as parameter the list of tiles
+        and the x, y positions of the first tile"""
         x_number = 0
         y_number = 20
         # Clé de mon dictionaire = Instance de classe
@@ -22,10 +22,12 @@ class View:
 
     @staticmethod
     def blit_img(screen, image, pos_x, pos_y):
+        """Method to blit an image"""
         return SCREEN.blit(image, (pos_x, pos_y))
 
     @staticmethod
     def blit_text(screen, font, text, color, pos_x, pos_y):
+        """Method to blit an text"""
         text = font.render(text, True, (color))
         return SCREEN.blit(text, (pos_x, pos_y))
 

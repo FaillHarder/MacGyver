@@ -10,7 +10,7 @@ class Model:
 
     @staticmethod
     def load_from_file(tiles):
-        """Method allowing to instantiate the characters of the file txt"""
+        """Method allowing to instantiate the characters of the file.txt"""
         with open("ressources/maze.txt", "r") as infile:
             data = infile.read().replace("\n", "")
             for char in data:
