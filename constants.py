@@ -9,16 +9,20 @@ MAPPING = {
     "g": "Guardian"
     }
 
-# Fenetre du jeu
+# Window
 SCREEN = pygame.display.set_mode((300, 400))
 
-# Texte compteur d'objet
-object_font = pygame.font.Font(
-    "ressources/font/Rounded_Elegance.ttf", 12)
-
-COUNT_1 = object_font.render("Objet ramassé : 1", True, (255, 255, 255))
-COUNT_2 = object_font.render("Objet ramassé : 2", True, (255, 255, 255))
-COUNT_3 = object_font.render("Objet ramassé : 3", True, (255, 255, 255))
+TITLE = "MacGyver Maze"
+START = "Press 'S' for Start"
+CLOSE = "Press 'Q' for Start"
+WIN = "YOU WIN"
+LOSE = "YOU LOSE"
+BLUE = (3, 140, 252)
+BLUE2 = (0, 255, 255)
+RED = (255, 0, 0)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RECTANGLE = pygame.rect.Rect(0, 50, 300, 50)
 
 # Win/lose sound
 WIN_SOUND = pygame.mixer.Sound("ressources/audio/Victory.mp3")

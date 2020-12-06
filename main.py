@@ -2,22 +2,18 @@ from model import Model
 from view import View
 from controller import Controller
 from imagemanager import ImageManager
-from textmanager import TextManager
+from fontmanager import FontManager as ft
 import pygame
 from constants import (
-    SCREEN, COUNT_1,
-    COUNT_2, COUNT_3, WIN_SOUND, LOSE_SOUND
+    SCREEN, WIN_SOUND, LOSE_SOUND, TITLE, START, CLOSE,
+    WIN, LOSE, BLUE, BLUE2, RED, BLACK, WHITE, RECTANGLE
     )
 
 
 def main():
     pygame.init()
     ImageManager.load()
-    TextManager.load()
-    black = (0, 0, 0)
-    rectangle = pygame.rect.Rect(0, 50, 300, 50)
-    rectangle2 = pygame.rect.Rect(0, 85, 300, 14)
-
+    ft.load()
     # Creation of the tile list
     tiles = []
     Model.load_from_file(tiles)
@@ -31,66 +27,56 @@ def main():
         pygame.K_UP: -15
         }
     continuer = True
-    start = True
-    game = True
+    state = "rules"
     while continuer:
         pygame.time.Clock().tick(30)
         # Display start/quit/game rule
-        if start:
-            View.blit(SCREEN, TextManager.get("gt"), 10, 10)
-            View.blit(SCREEN, TextManager.get("st"), 35, 50)
-            View.blit(SCREEN, TextManager.get("qt"), 32, 80)
-            View.blit(SCREEN, ImageManager.get("gr"), 0, 150)
-        # Event pygame
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                continuer = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
+        if state == "rules":
+            View.blit_text(SCREEN, ft.get("title"), TITLE, BLUE, 10, 5)
+            View.blit_text(SCREEN, ft.get("sq"), START, BLUE2, 35, 50)
+            View.blit_text(SCREEN, ft.get("sq"), CLOSE, BLUE2, 32, 80)
+            View.blit_img(SCREEN, ImageManager.get("gr"), 0, 150)
+            # Event pygame Quit or Start
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     continuer = False
-                elif event.key == pygame.K_s:
-                    while game:
-                        # Black rectangle over a Start/Quit
-                        pygame.draw.rect(SCREEN, black, rectangle)
-                        # Blit counter "objet ramassé"
-                        View.blit(SCREEN, TextManager.get("c0"), 5, 85)
-                        # Index de macgyver recovery
-                        index_mac = View.index_macgyver(tiles)
-                        # Draw maze (pos x = 0, y = 100)
-                        View.draw(tiles, 0, 100)
-                        # Blit counter "objet ramassé 1/2/3"
-                        if Controller.counter_object == 1:
-                            pygame.draw.rect(SCREEN, black, rectangle2)
-                            View.blit(SCREEN, COUNT_1, 5, 85)
-                        elif Controller.counter_object == 2:
-                            pygame.draw.rect(SCREEN, black, rectangle2)
-                            View.blit(SCREEN, COUNT_2, 5, 85)
-                        elif Controller.counter_object == 3:
-                            pygame.draw.rect(SCREEN, black, rectangle2)
-                            View.blit(SCREEN, COUNT_3, 5, 85)
-                        # Event Quit and move
-                        for event in pygame.event.get():
-                            if event.type == pygame.QUIT:
-                                game = False
-                                continuer = False
-                            elif event.type == pygame.KEYDOWN:
-                                for key in list_move:
-                                    if event.key == key:
-                                        Controller.move(
-                                            tiles, index_mac, list_move[key])
-                            # Check win
-                            win_state = Controller.check_win(tiles, index_mac)
-                            if win_state == "win":
-                                WIN_SOUND.play().set_volume(0.2)
-                                View.blit(SCREEN, TextManager.get("wt"), 90, 50)
-                                game = False
-                                start = False
-                            elif win_state == "lose":
-                                LOSE_SOUND.play().set_volume(0.1)
-                                View.blit(SCREEN, TextManager.get("lt"), 75, 50)
-                                game = False
-                                start = False
-                        pygame.display.flip()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        continuer = False
+                    elif event.key == pygame.K_s:
+                        state = "running"
+        if state == "running":
+            # Black rectangle over a Start/Quit
+            pygame.draw.rect(SCREEN, BLACK, RECTANGLE)
+            # Draw maze (pos x = 0, y = 100)
+            View.draw(tiles, 0, 100)
+            # Blit counter "objet ramassé"
+            ojb_pick = (f"Objet ramassé : {Controller.counter_object}")
+            View.blit_text(SCREEN, ft.get("obj"), ojb_pick, WHITE, 5, 85)
+            index_mac = View.index_macgyver(tiles)
+            # Event Quit and move
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    continuer = False
+                elif event.type == pygame.KEYDOWN:
+                    for key in list_move:
+                        if event.key == key:
+                            Controller.move(
+                                tiles, index_mac, list_move[key])
+            # Check win
+            win_state = Controller.check_win(tiles, index_mac)
+            if win_state == "win":
+                WIN_SOUND.play().set_volume(0.2)
+                View.blit_text(SCREEN, ft.get("wl"), WIN, BLUE2, 90, 50)
+                state = "win"
+            elif win_state == "lose":
+                LOSE_SOUND.play().set_volume(0.1)
+                View.blit_text(SCREEN, ft.get("wl"), LOSE, RED, 75, 50)
+                state = "lose"
+        if state == "win" or state == "lose":
+            pygame.display.flip()
+            continuer = False
+            pygame.time.wait(4000)
         pygame.display.flip()
     pygame.quit()
 

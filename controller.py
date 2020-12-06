@@ -32,9 +32,9 @@ class Controller:
             list_maze, macgyver position and destination"""
         destination_tile = (index_macgyver + destination)
         if (index_macgyver % 15 == 0 and destination == -1 or
-            index_macgyver % 15 == 14 and destination == +1 or
+            index_macgyver % 15 == 14 and destination == 1 or
             index_macgyver < 15 and destination == -15 or
-            index_macgyver > 210 and destination == +15):
+                index_macgyver > 210 and destination == 15):
             print("Attention au vide!!")
         elif isinstance(maze[destination_tile], Path):
             maze[destination_tile] = MacGyver()
