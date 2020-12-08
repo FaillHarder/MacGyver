@@ -1,5 +1,5 @@
 from .tile import Tile
-from imagemanager import ImageManager
+from managers.imagemanager import ImageManager
 
 
 class Wall(Tile):

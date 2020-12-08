@@ -24,6 +24,10 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RECTANGLE = pygame.rect.Rect(0, 50, 300, 50)
 
-# Win/lose sound
-WIN_SOUND = pygame.mixer.Sound("ressources/audio/Victory.mp3")
-LOSE_SOUND = pygame.mixer.Sound("ressources/audio/game_over.mp3")
+# Dictionary of directional keys for move
+BINDING_MOVE = {
+    pygame.K_LEFT: -1,
+    pygame.K_RIGHT: +1,
+    pygame.K_DOWN: +15,
+    pygame.K_UP: -15
+    }
