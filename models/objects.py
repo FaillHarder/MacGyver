@@ -1,5 +1,5 @@
+from managers.imagemanager import ImageManager
 from .tile import Tile
-from imagemanager import ImageManager
 
 
 class Objects(Tile):
