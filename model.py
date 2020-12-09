@@ -1,9 +1,9 @@
-from constants import MAPPING
-from models.path import Path
-from models.wall import Wall
 from models.guardian import Guardian
 from models.macgyver import MacGyver
+from models.path import Path
 from models.tile import Tile
+from models.wall import Wall
+from constants import MAPPING
 
 
 class Model:

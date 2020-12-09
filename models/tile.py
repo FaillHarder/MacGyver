@@ -2,7 +2,7 @@ from constants import SCREEN
 
 
 class Tile():
-
+    """"""
     def __init__(self, image):
         self.image = image
 
