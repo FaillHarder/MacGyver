@@ -1,6 +1,6 @@
-from models.macgyver import MacGyver
 from managers.fontmanager import FontManager
 from managers.imagemanager import ImageManager
+from models.macgyver import MacGyver
 from constants import SCREEN, Color, Message
 
 
@@ -10,7 +10,8 @@ class View:
     def draw_maze(tile_list):
         """Method allowing to draw the labyrinth.
         It takes as parameter the list of tiles
-        and the x, y positions of the first tile"""
+        and the x, y positions of the first tile.
+        tile = 20x20 pixel"""
         pos_x = 0
         pos_y = 100
         x_number = 0

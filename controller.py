@@ -53,5 +53,4 @@ class Controller:
             if index_macgyver + destination[key] <= 225:
                 if isinstance(maze[mac_position], Guardian):
                     return "win" if Controller.counter_object == 3 else "lose"
-                    # opérateur ternaire
         return "running"
