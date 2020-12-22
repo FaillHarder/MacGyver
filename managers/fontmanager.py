@@ -6,6 +6,8 @@ class FontManager:
 
     @classmethod
     def load(cls):
+        """Method that loads font into a dictionary"""
+
         cls.font["title"] = pygame.font.Font(
             "ressources/font/heavycopper3d.ttf", 24)
         cls.font["sq"] = pygame.font.Font(

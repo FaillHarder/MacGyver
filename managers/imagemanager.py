@@ -6,6 +6,8 @@ class ImageManager:
 
     @classmethod
     def load(cls):
+        """Method that loads images into a dictionary"""
+
         cls.images["Wall"] = pygame.image.load(
             "ressources/images/wall.png").convert()
         cls.images["MacGyver"] = pygame.image.load(
@@ -25,4 +27,5 @@ class ImageManager:
 
     @classmethod
     def get(cls, name):
+        """Method to get an image"""
         return cls.images[name]
