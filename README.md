@@ -1,6 +1,6 @@
 # **MacGyver MAZE**
 Help MacGyver to escape the maze! (there is only one level)
-# Project n°3 of OpenClassrooms
+# Project python n°3 of OpenClassrooms
 Description
 * The structure (start, location of the walls, finish) is saved in a file.txt for easy modification if needed.
 * MacGyver will be controlled by the directional keys on the keyboard.
