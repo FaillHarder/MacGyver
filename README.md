@@ -12,7 +12,7 @@ Description
 * If he does not have all the items and he appears in front of the guard, he dies (life is cruel for the heroes).
 
 # Download files
-https://github.com/FaillHarder/MacGyver.git download zip and extract all
+https://github.com/FaillHarder/MacGyver/archive/master.zip download zip and extract all
 
 # Run the game :
 Install Python
