@@ -21,6 +21,6 @@ Install Python
 * Execute the command : pip install -r requirements.txt
 * Execute the command : python main.py
 
-# Develop whith:
+# Develop with:
 * Python 3.9.1
 * Pygame 2.0.1
