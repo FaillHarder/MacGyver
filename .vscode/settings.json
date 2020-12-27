@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\FailHarder\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "python.pythonPath": "g:\\Developpeur\\Formation Openclassrooms\\P3_fruteau_de_laclos_cédric\\MacGyver\\venv\\Scripts\\python.exe",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true
