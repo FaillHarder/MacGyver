@@ -16,8 +16,6 @@ class View:
         pos_y = 100
         x_number = 0
         y_number = 20
-        # Clé de mon dictionaire = Instance de classe
-        # Valeur = Image associer à la classe
         for x, tile in enumerate(tile_list):
             tile.draw((pos_x + x_number), pos_y)
             x_number += 20

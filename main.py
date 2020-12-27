@@ -48,7 +48,10 @@ def main():
                         state = "running"
                 elif state == "running":
                     if event.key in BINDING_MOVE:
-                        Controller.move(tiles, View.index_macgyver(tiles), BINDING_MOVE[event.key])
+                        Controller.move(
+                            tiles, View.index_macgyver(tiles),
+                            BINDING_MOVE[event.key]
+                            )
         # Logics
         if state == "running":
             state = Controller.check_win(tiles, View.index_macgyver(tiles))
