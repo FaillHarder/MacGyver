@@ -4,7 +4,7 @@ Help MacGyver to escape the maze! (there is only one level)
 Description
 * The structure (start, location of the walls, finish) is saved in a file.txt for easy modification if needed.
 * MacGyver will be controlled by the directional keys on the keyboard.
-* Les objets seront répartis aléatoirement dans le labyrinthe et changeront d’emplacement si l'utilisateur ferme le jeu et le relance.
+* The objects will be distributed randomly in the maze and will change location if the user closes the game and relaunches it.
 * The game window will be a square that can display 15 sprites in length.
 * MacGyver will therefore have to move from square to square.
 * It will pick up an item simply by moving over it.
